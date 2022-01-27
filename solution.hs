@@ -1,11 +1,6 @@
 import Data.List
 import System.Random
 
--- Based off this leetcode problem:
--- https://leetcode.com/problems/k-th-smallest-in-lexicographical-order
-
--- Some more description of this function and solution:
--- https://whimsical.com/lexigraphical-order-55bFvhqotEiyaednQunLQB
 numbers :: Int -> Int -> [Int]
 numbers max start = let
   current_level = takeWhile (<= max) [start..(first_nine start)]
