@@ -5,6 +5,6 @@ A solution to a [leetcode problem](https://leetcode.com/problems/k-th-smallest-i
 Given two integers n and k, return the kth lexicographically smallest integer in the range [1, n]
 ``` 
 
-A lazy solution is implemented in [Haskell](haskell) and [Rust](rust)
+A lazy solution is implemented in [Haskell](haskell/solution.hs) and [Rust](rust/src/main.rs)
 
 A detailed description of the problem solution can also be found [here](https://whimsical.com/lexigraphical-order-55bFvhqotEiyaednQunLQB)
