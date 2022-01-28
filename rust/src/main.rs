@@ -48,17 +48,24 @@ impl Iterator for Numbers {
     }
 }
 
+// Initializes a recursive counting Numbers struct from 1-9. If the max is less than 9
+// it will stop before it reaches 9
 fn find_kth_number(n: u64, k: u64) -> u64 {
     let mut numbers = Numbers{max: n, curr: 1, end: 9, curr_inbetween: Box::new(None)};
     numbers.nth((k-1) as usize).unwrap()
 }
 
+// Converts the range of integers into strings, sorts them in lexigraphical
+// order then takes the kth element. This is a slower but more reliable
+// function to test randomized test cases against
 fn find_kth_number_slow(n: u64, k: u64) -> u64 {
     let mut range = (1..=n).map(|x| x.to_string()).collect::<Vec<String>>();
     range.sort();
     range.get((k-1) as usize).unwrap().parse::<u64>().unwrap()
 }
 
+// Generates some random test cases with an n, k, and expected _value from 
+// the find_kth_number_slow function
 fn random_test_cases(num_cases: u64, n_max: u64) -> Vec<(u64, u64, u64)> {
     let mut rng = thread_rng();
     (1..num_cases).map(|_| {
@@ -75,13 +82,13 @@ fn main() {
         (1, 1, 1),
         (9, 9, 9)];
 
-    // Run some test cases with smaller n. N is between (1, 10)
+    // Run some test cases with smaller n between (1, 10)
     let smaller_cases = random_test_cases(100, 10);
 
-    // Run some test cases with medium n. N is between (1, 100)
+    // Run some test cases with medium n between (1, 100)
     let medium_cases = random_test_cases(100, 100);
 
-    // Run some test cases with larger n. N is between (1, 10000)
+    // Run some test cases with larger n between (1, 10000)
     let large_cases = random_test_cases(100, 10000);
 
     let all_cases = manual_tests.iter()
